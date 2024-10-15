@@ -46,13 +46,13 @@ This project is built using:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/username/repo-name.git
+    git clone https://github.com/iambrkkdn/wallet_app
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd repo-name
+    cd wallet_app
     ```
 
 3. Build and run the Docker containers using Docker Compose:
