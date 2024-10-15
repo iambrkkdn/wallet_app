@@ -46,7 +46,7 @@ This project is built using:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/iambrkkdn/wallet_app
+    git clone https://github.com/iambrkkdn/wallet_app.git
     ```
 
 2. Navigate to the project directory:
