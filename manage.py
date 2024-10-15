@@ -15,7 +15,9 @@ logging.basicConfig(level=logging.INFO)
 def mysql_is_ready(retries=5, delay=5):
     for attempt in range(retries):
         try:
-            logging.info(f"Trying connect to MySQL ({attempt + 1}/{retries})...")
+            logging.info(
+                f"Attempting to connect to MySQL on {DB_HOST}:{DB_PORT} ({attempt + 1}/{retries})..."
+            )
             db = MySQLdb.connect(
                 host=DB_HOST,
                 user=DB_USER,
@@ -24,12 +26,14 @@ def mysql_is_ready(retries=5, delay=5):
                 port=int(DB_PORT),
             )
             db.close()
-            logging.info("MySQL is ready 🔥")
+            logging.info("MySQL connection successful 🔥")
             return
         except MySQLdb.OperationalError as e:
-            logging.warning(f"Can not connect to MySQL: {e}. Try again in {delay} second...")
+            logging.warning(
+                f"Failed to connect to MySQL on {DB_HOST}:{DB_PORT}: {e}. Retrying in {delay} seconds..."
+            )
             time.sleep(delay)
-    logging.error(f"Can not connect to MySQL after {retries} tries. Exit job.")
+    logging.error(f"Failed to connect to MySQL on {DB_HOST}:{DB_PORT} after {retries} attempts. Exiting.")
     sys.exit(-1)
 
 
